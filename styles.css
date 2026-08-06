@@ -1,0 +1,341 @@
+:root{
+  --preto: #0d0d0d;
+  --preto-2: #1a1a1a;
+  --amarelo: #F2C230;
+  --amarelo-escuro: #D9A61E;
+  --vermelho: #C41E1E;
+  --vermelho-escuro: #8f1414;
+  --branco: #ffffff;
+  --cinza-claro: #f4f4f4;
+  --cinza-texto: #4a4a4a;
+  --fonte-titulo: 'Rajdhani', 'Arial Narrow', sans-serif;
+  --fonte-texto: 'Inter', system-ui, sans-serif;
+  --raio: 10px;
+  --sombra: 0 10px 30px rgba(0,0,0,.15);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:var(--fonte-texto);
+  color:var(--preto);
+  background:var(--branco);
+  line-height:1.55;
+  overflow-x:hidden;
+}
+
+h1,h2,h3{
+  font-family:var(--fonte-titulo);
+  font-weight:700;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  line-height:1.1;
+}
+
+img{max-width:100%;display:block;}
+
+a{color:inherit;text-decoration:none;}
+
+.container{
+  width:100%;
+  max-width:1140px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+.skip-link{
+  position:absolute;
+  left:-999px;
+  top:auto;
+  background:var(--amarelo);
+  color:var(--preto);
+  padding:10px 16px;
+  z-index:1000;
+}
+.skip-link:focus{left:10px;top:10px;}
+
+/* Botoes */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 22px;
+  border-radius:999px;
+  font-weight:600;
+  font-size:.95rem;
+  border:2px solid transparent;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.btn-lg{padding:16px 30px;font-size:1.05rem;}
+.btn-whatsapp{
+  background:#25D366;
+  color:#fff;
+}
+.btn-whatsapp:hover{background:#1ebe57;}
+.btn-outline{
+  border-color:var(--branco);
+  color:var(--branco);
+}
+.btn-outline:hover{background:rgba(255,255,255,.1);}
+.btn-header{padding:10px 18px;font-size:.9rem;}
+
+/* Header */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--preto);
+  border-bottom:3px solid var(--amarelo);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:12px 20px;
+}
+.logo{
+  display:flex;
+  align-items:baseline;
+  gap:6px;
+  position:relative;
+  flex-shrink:0;
+}
+.logo-mg{
+  font-family:var(--fonte-titulo);
+  font-weight:700;
+  font-size:1.8rem;
+  color:var(--vermelho);
+}
+.logo-motos{
+  font-family:var(--fonte-titulo);
+  font-weight:700;
+  font-size:1.8rem;
+  color:var(--branco);
+}
+.logo-ribbon{
+  position:absolute;
+  bottom:-16px;
+  left:0;
+  background:var(--vermelho);
+  color:var(--amarelo);
+  font-size:.55rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:2px 8px;
+  border-radius:3px;
+  white-space:nowrap;
+}
+.main-nav{
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.main-nav a{
+  color:var(--branco);
+  font-weight:600;
+  font-size:.95rem;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+}
+.main-nav a:hover{color:var(--amarelo);}
+
+/* Hero */
+.hero{
+  background:var(--preto);
+  color:var(--branco);
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  align-items:center;
+  gap:40px;
+  padding:60px 20px 70px;
+}
+.eyebrow{
+  color:var(--amarelo);
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:.85rem;
+  margin-bottom:10px;
+}
+.hero h1{
+  font-size:clamp(2.4rem, 5vw, 3.6rem);
+  margin-bottom:18px;
+}
+.hero h1 span{color:var(--vermelho);}
+.hero-lead{
+  font-size:1.1rem;
+  color:#d6d6d6;
+  max-width:46ch;
+  margin-bottom:28px;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.hero-graphic{
+  border-radius:var(--raio);
+  overflow:hidden;
+  box-shadow:var(--sombra);
+}
+.hero-svg{width:100%;height:auto;display:block;}
+
+/* Servicos */
+.servicos{
+  padding:70px 0;
+  background:var(--cinza-claro);
+}
+.servicos h2{
+  font-size:2rem;
+  text-align:center;
+  margin-bottom:8px;
+}
+.section-lead{
+  text-align:center;
+  color:var(--cinza-texto);
+  margin-bottom:40px;
+  font-size:1.05rem;
+}
+.servicos-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:20px;
+}
+.servico-card{
+  background:var(--branco);
+  border-radius:var(--raio);
+  padding:26px 22px;
+  box-shadow:0 4px 16px rgba(0,0,0,.06);
+  border-top:4px solid var(--amarelo);
+  transition:transform .15s ease;
+}
+.servico-card:hover{transform:translateY(-4px);}
+.servico-card h3{
+  font-size:1.05rem;
+  margin:14px 0 8px;
+}
+.servico-card p{
+  font-size:.92rem;
+  color:var(--cinza-texto);
+}
+
+/* Diferenciais */
+.diferenciais{
+  background:var(--vermelho);
+  color:var(--branco);
+  padding:70px 0;
+}
+.diferenciais-inner{max-width:720px;}
+.diferenciais h2{
+  font-size:2rem;
+  margin-bottom:24px;
+}
+.diferenciais h2 span{color:var(--amarelo);}
+.diferenciais-list{
+  list-style:none;
+  margin-bottom:30px;
+}
+.diferenciais-list li{
+  padding:10px 0 10px 32px;
+  position:relative;
+  font-size:1.05rem;
+  border-bottom:1px solid rgba(255,255,255,.2);
+}
+.diferenciais-list li::before{
+  content:'✓';
+  position:absolute;
+  left:0;
+  color:var(--amarelo);
+  font-weight:700;
+}
+
+/* Localizacao */
+.localizacao{
+  padding:70px 0;
+  text-align:center;
+}
+.localizacao h2{font-size:2rem;margin-bottom:8px;}
+.mapa-wrapper{
+  border-radius:var(--raio);
+  overflow:hidden;
+  box-shadow:var(--sombra);
+  margin:30px 0 20px;
+}
+.mapa-wrapper iframe{
+  width:100%;
+  height:380px;
+  border:0;
+  display:block;
+}
+.endereco{color:var(--cinza-texto);}
+
+/* Footer */
+.site-footer{
+  background:var(--preto-2);
+  color:var(--branco);
+  padding:50px 0 20px;
+}
+.footer-inner{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:30px;
+  padding-bottom:30px;
+}
+.footer-brand{font-size:1.4rem;}
+.footer-contacts{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.footer-contacts li{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:.95rem;
+}
+.footer-copy{
+  text-align:center;
+  font-size:.8rem;
+  color:#999;
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:20px;
+}
+
+/* WhatsApp flutuante */
+.whatsapp-float{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:58px;
+  height:58px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
+  z-index:200;
+}
+.whatsapp-float:hover{background:#1ebe57;}
+
+/* Responsivo */
+@media (max-width: 900px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-graphic{order:-1;}
+  .main-nav{display:none;}
+}
+
+@media (max-width: 560px){
+  .btn-header{display:none;}
+  .footer-inner{flex-direction:column;}
+}

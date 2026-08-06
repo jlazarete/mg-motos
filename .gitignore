@@ -1,0 +1,19 @@
+# Segredos e variaveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Dependencias (caso entre build tooling no futuro)
+node_modules/
+package-lock.json
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# Imagens brutas antes do pipeline de otimizacao (nao versionar originais pesados)
+assets/img/raw/
