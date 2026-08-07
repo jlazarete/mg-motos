@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-labelledby="mgLogoTitle">
+  <title id="mgLogoTitle">MG Motos – Peças e Serviços</title>
+
+  <!-- disco preto do emblema -->
+  <circle cx="150" cy="150" r="145" fill="#0d0d0d"/>
+  <circle cx="150" cy="150" r="131" fill="none" stroke="#C41E1E" stroke-width="6"/>
+
+  <!-- sinal de atencao decorativo no topo -->
+  <g>
+    <polygon points="150,9 173,47 127,47" fill="#0d0d0d" stroke="#C41E1E" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="147" y="21" width="6" height="15" rx="3" fill="#C41E1E"/>
+    <circle cx="150" cy="41" r="3.2" fill="#C41E1E"/>
+  </g>
+
+  <!-- moto (icone geometrico: rodas + tanque/banco + garfo) -->
+  <g fill="none" stroke="#f2f2f2" stroke-width="7">
+    <circle cx="88" cy="188" r="22"/>
+    <circle cx="205" cy="188" r="25"/>
+  </g>
+  <g fill="#f2f2f2">
+    <circle cx="88" cy="188" r="4"/>
+    <circle cx="205" cy="188" r="4"/>
+
+    <rect x="95" y="118" width="112" height="23" rx="11.5" transform="rotate(-9 151 130)"/>
+
+    <path d="M100,146 L84,177" stroke="#f2f2f2" stroke-width="10" stroke-linecap="round"/>
+    <path d="M204,143 L202,169" stroke="#f2f2f2" stroke-width="10" stroke-linecap="round"/>
+    <path d="M78,120 L98,113" stroke="#f2f2f2" stroke-width="8" stroke-linecap="round"/>
+
+    <circle cx="76" cy="131" r="8"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="150" y="217" text-anchor="middle" font-family="'Arial Black','Arial Bold',Arial,sans-serif"
+        font-weight="900" font-size="35" fill="#C41E1E" letter-spacing="1">MG MOTOS</text>
+
+  <text x="150" y="240" text-anchor="middle" font-family="'Arial Narrow',Arial,sans-serif"
+        font-weight="700" font-size="13" fill="#f2f2f2" letter-spacing="2.5">PEÇAS E SERVIÇOS</text>
+</svg>
