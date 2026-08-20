@@ -26,11 +26,12 @@ Foco do projeto:
 ## Estrutura
 
 ```
-index.html      pagina principal (conteudo + SEO + schema.org)
-styles.css      design system (paleta da marca: preto, vermelho, amarelo)
-script.js       WhatsApp/telefone centralizados em uma unica config
-assets/img/     fotos reais do negocio (fachada, servicos, equipe) — pendente
-docs/           documentacao de apoio (oferta replicavel, etc.)
+index.html          pagina principal (conteudo + SEO + schema.org)
+styles.css          design system (paleta da marca: preto, vermelho, amarelo)
+script.js           WhatsApp/telefone centralizados em uma unica config
+otimizar_imagens.py trata fotos reais recebidas do cliente (resize, webp, og-image, EXIF SEO)
+assets/img/         hero usa foto de moto (banco de imagens); fachada tratada fica em og-image.jpg e reservada para o Google Meu Negocio; raw/ guarda os originais dos clientes (fora do Git)
+docs/               documentacao de apoio (oferta replicavel, etc.)
 ```
 
 ## Como rodar localmente
@@ -58,11 +59,13 @@ Depois, no GitHub: **Settings > Pages > Branch: main /(root)** e salvar. O site 
 
 Antes de considerar o site pronto para publicar, confirmar com o cliente:
 
-- [ ] **Fotos reais** da fachada, bancada de servico e equipe (a skill de automacao de imagens para GMN roda assim que as fotos chegarem: dedup por hash visual, EXIF com palavras-chave locais, renomeacao semantica).
+- [x] **Foto da fachada** recebida e tratada (`otimizar_imagens.py`: resize, webp, recorte de og-image, EXIF com palavras-chave locais). Decisao do cliente: essa foto **nao** vai no hero do site — fica reservada para o perfil do Google Meu Negocio (e como `og-image.jpg`/preview de compartilhamento). Original preservado em `assets/img/raw/` (fora do Git).
+- [x] **Foto do hero** — o cliente pediu uma moto (Honda Hornet vermelha, angulo frontal-diagonal) para casar com a identidade do flyer, em vez da foto da fachada. Usada `assets/img/moto-hornet-mg-motos.jpg`/`.webp`, foto de banco de imagens (Unsplash, licenca livre para uso comercial, credito: Jonath Jo). Se o cliente mandar a foto oficial da moto do flyer depois, e so substituir esses dois arquivos.
+- [ ] **Fotos da bancada de servico e da equipe** — pendentes; basta colocar em `assets/img/raw/` e rodar `python otimizar_imagens.py` de novo.
 - [ ] **Horario de atendimento** exato (o schema.org esta com um horario placeholder de segunda a sabado, 08h-18h, que precisa ser confirmado ou corrigido).
-- [ ] **Nome oficial da rua**: o registro postal usa "Avenida das Cerejeiras"; o material de divulgacao usa "Av. Cerejeiras". Confirmar qual versao esta cadastrada no Google Meu Negocio para manter o NAP (Nome/Endereco/Telefone) identico em todo lugar — isso importa para SEO local.
+- [x] **Nome oficial da rua**: confirmado com o cliente como "Av. das Cerejeiras, 34" — mesmo formato que ja aparecia no registro do Google Maps para esse endereco (perfil da barbearia anterior). Site atualizado.
 - [ ] **Link do perfil do Google Meu Negocio** (para linkar no site e citar como `sameAs` no schema.org).
-- [ ] **Dominio proprio** (opcional) — hoje o `canonical` no `index.html` aponta para um dominio placeholder (`mgmotos.com.br`) que precisa ser ajustado ou removido se nao houver dominio.
+- [x] **Dominio proprio**: registrado em 2026-08-20 — `mgmotospecas.com.br`. `canonical`, `og:image`/`og:url` e schema.org atualizados para `https://www.mgmotospecas.com.br/`. `robots.txt` e `sitemap.xml` criados apontando para esse dominio. Falta apontar o DNS para o host de deploy escolhido (ver secao de Deploy).
 
 ## Status do Projeto (Kanban / Checklist)
 
@@ -77,11 +80,12 @@ Antes de considerar o site pronto para publicar, confirmar com o cliente:
 - [ ] Validacao visual do site num navegador real (mobile + desktop).
 
 ### A Fazer
-- [ ] Receber fotos reais do cliente e rodar o pipeline de otimizacao para GMN.
+- [x] Receber foto da fachada e rodar o pipeline de otimizacao (`otimizar_imagens.py`).
+- [ ] Receber fotos da bancada de servico e da equipe e rodar o mesmo pipeline.
 - [ ] Confirmar horario de atendimento e ajustar `openingHoursSpecification`.
-- [ ] Confirmar NAP exato (nome da rua) junto ao Google Meu Negocio do cliente.
-- [ ] Criar/registrar dominio proprio (se o cliente quiser sair do `github.io`).
-- [ ] Deploy no GitHub Pages.
+- [x] Confirmar NAP exato (nome da rua) junto ao Google Meu Negocio do cliente — "Av. das Cerejeiras, 34".
+- [x] Criar/registrar dominio proprio — `mgmotospecas.com.br` (2026-08-20).
+- [ ] Deploy e apontamento de DNS do dominio proprio.
 
 ---
 
