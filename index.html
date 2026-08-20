@@ -33,6 +33,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+<link rel="preload" as="image" href="assets/img/moto-hornet-mg-motos.webp" type="image/webp" fetchpriority="high">
+
 <link rel="stylesheet" href="styles.css">
 
 <script type="application/ld+json">
@@ -80,14 +82,21 @@
       <span class="logo-mg">MG</span><span class="logo-motos">MOTOS</span>
     </a>
 
-    <nav class="main-nav" aria-label="Navegação principal">
+    <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
       <a href="#servicos">Serviços</a>
+      <a href="#orcamento">Orçamento</a>
       <a href="#diferenciais">Diferenciais</a>
       <a href="#localizacao">Localização</a>
       <a href="#contato">Contato</a>
     </nav>
 
-    <a class="btn btn-whatsapp btn-header" data-whatsapp-link target="_blank" rel="noopener">
+    <a class="btn btn-whatsapp btn-header" data-whatsapp-link target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.15 8.15 0 0 1-1.26-4.33c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.41a8.14 8.14 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.16 8.2zm4.5-6.14c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.02 2.56.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.66-1.17.21-.58.21-1.08.14-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
       <span>WhatsApp</span>
     </a>
@@ -106,7 +115,7 @@
           com diagnóstico preciso e atendimento de confiança.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-whatsapp btn-lg" data-whatsapp-link target="_blank" rel="noopener">Fale agora no WhatsApp</a>
+          <a class="btn btn-whatsapp btn-lg" data-whatsapp-link target="_blank" rel="noopener noreferrer">Fale agora no WhatsApp</a>
           <a class="btn btn-outline btn-lg" data-phone-link>Ligar: <span data-phone-display></span></a>
         </div>
       </div>
@@ -174,6 +183,45 @@
     </div>
   </section>
 
+  <section class="orcamento" id="orcamento">
+    <div class="container">
+      <h2>Peça seu orçamento agora</h2>
+      <p class="section-lead">Escolha sua moto e o serviço — a mensagem já sai pronta no WhatsApp.</p>
+
+      <form class="orcamento-form" id="orcamento-form">
+        <div class="orcamento-campo">
+          <label for="orcamento-moto">Modelo da moto</label>
+          <select id="orcamento-moto" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="Honda CG 160 / Titan / Fan">Honda CG 160 / Titan / Fan</option>
+            <option value="Honda Biz / Pop">Honda Biz / Pop</option>
+            <option value="Yamaha Factor / Fazer">Yamaha Factor / Fazer</option>
+            <option value="Yamaha Fazer 250 / XJ6">Yamaha Fazer 250 / XJ6</option>
+            <option value="Honda Hornet / CB">Honda Hornet / CB</option>
+            <option value="Outra moto">Outra moto</option>
+          </select>
+        </div>
+
+        <div class="orcamento-campo">
+          <label for="orcamento-servico">Serviço desejado</label>
+          <select id="orcamento-servico" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="Manutenção Preventiva">Manutenção Preventiva</option>
+            <option value="Revisão Completa">Revisão Completa</option>
+            <option value="Troca de Óleo">Troca de Óleo</option>
+            <option value="Suspensão">Suspensão</option>
+            <option value="Freios">Freios</option>
+            <option value="Injeção Eletrônica">Injeção Eletrônica</option>
+            <option value="Diagnóstico">Diagnóstico</option>
+            <option value="Peças e Acessórios">Peças e Acessórios</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-whatsapp btn-lg">Pedir orçamento no WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
   <section class="diferenciais" id="diferenciais">
     <div class="container diferenciais-inner">
       <div class="diferenciais-text">
@@ -184,7 +232,7 @@
           <li>Orçamento claro, combinado antes de qualquer serviço.</li>
           <li>Atendimento direto pelo WhatsApp, sem enrolação.</li>
         </ul>
-        <a class="btn btn-whatsapp" data-whatsapp-link target="_blank" rel="noopener">Pedir orçamento</a>
+        <a class="btn btn-whatsapp" data-whatsapp-link target="_blank" rel="noopener noreferrer">Pedir orçamento</a>
       </div>
     </div>
   </section>
@@ -193,13 +241,15 @@
     <div class="container">
       <h2>Onde estamos</h2>
       <p class="section-lead">Jardim Japão, Vila Maria — Zona Norte de São Paulo.</p>
-      <div class="mapa-wrapper">
-        <iframe
-          title="Localização MG Motos"
-          src="https://maps.google.com/maps?q=Av.%20das%20Cerejeiras%2C%2034%2C%20Jardim%20Japão%2C%20São%20Paulo%20-%20SP&t=&z=15&ie=UTF8&iwloc=&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+      <div class="mapa-wrapper" id="mapa-wrapper" data-mapa-src="https://maps.google.com/maps?q=Av.%20das%20Cerejeiras%2C%2034%2C%20Jardim%20Japão%2C%20São%20Paulo%20-%20SP&t=&z=15&ie=UTF8&iwloc=&output=embed">
+        <button type="button" class="mapa-facade" data-mapa-toggle>
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="#C41E1E"><path d="M12 2a7 7 0 00-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+          <span>Toque para carregar o mapa</span>
+        </button>
+      </div>
+      <div class="rota-actions">
+        <a class="btn btn-rota" data-maps-link target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a>
+        <a class="btn btn-rota" data-waze-link target="_blank" rel="noopener noreferrer">Traçar rota no Waze</a>
       </div>
       <p class="endereco"><strong>Av. das Cerejeiras, 34 – Jardim Japão, São Paulo - SP</strong></p>
     </div>
@@ -219,7 +269,7 @@
       </li>
       <li>
         <svg viewBox="0 0 24 24" width="18" height="18" fill="#F2C230"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
-        <a href="https://www.instagram.com/mgmotos_ofic/" target="_blank" rel="noopener">@mgmotos_ofic</a>
+        <a href="https://www.instagram.com/mgmotos_ofic/" target="_blank" rel="noopener noreferrer">@mgmotos_ofic</a>
       </li>
       <li>
         <svg viewBox="0 0 24 24" width="18" height="18" fill="#F2C230"><path d="M12 2a7 7 0 00-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
@@ -230,7 +280,7 @@
   <p class="footer-copy">© <span data-ano></span> MG Motos – Peças e Serviços · CNPJ 25.901.894/0001-11</p>
 </footer>
 
-<a class="whatsapp-float" data-whatsapp-link target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+<a class="whatsapp-float" data-whatsapp-link target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.15 8.15 0 0 1-1.26-4.33c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.41a8.14 8.14 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.16 8.2zm4.5-6.14c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.02 2.56.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.66-1.17.21-.58.21-1.08.14-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
 </a>
 

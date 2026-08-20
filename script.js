@@ -2,6 +2,7 @@
 const CONFIG = {
   telefone: '+5511937297463',
   mensagemPadrao: 'Ola! Vim pelo site da MG Motos e gostaria de um orcamento.',
+  enderecoQuery: 'Av. das Cerejeiras, 34, Jardim Japao, Sao Paulo - SP',
 };
 
 function formatarTelefoneExibicao(numero) {
@@ -35,4 +36,53 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-ano]').forEach((el) => {
     el.textContent = new Date().getFullYear();
   });
+
+  document.querySelectorAll('[data-maps-link]').forEach((el) => {
+    el.setAttribute('href', `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONFIG.enderecoQuery)}`);
+  });
+
+  document.querySelectorAll('[data-waze-link]').forEach((el) => {
+    el.setAttribute('href', `https://waze.com/ul?q=${encodeURIComponent(CONFIG.enderecoQuery)}&navigate=yes`);
+  });
+
+  const mapaWrapper = document.getElementById('mapa-wrapper');
+  const mapaToggle = document.querySelector('[data-mapa-toggle]');
+  if (mapaWrapper && mapaToggle) {
+    mapaToggle.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.title = 'Localização MG Motos';
+      iframe.src = mapaWrapper.dataset.mapaSrc;
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      mapaWrapper.innerHTML = '';
+      mapaWrapper.appendChild(iframe);
+    });
+  }
+
+  const orcamentoForm = document.getElementById('orcamento-form');
+  if (orcamentoForm) {
+    orcamentoForm.addEventListener('submit', (evento) => {
+      evento.preventDefault();
+      const moto = document.getElementById('orcamento-moto').value;
+      const servico = document.getElementById('orcamento-servico').value;
+      const numero = CONFIG.telefone.replace(/\D/g, '');
+      const texto = encodeURIComponent(`Ola! Gostaria de um orcamento para ${servico} na minha ${moto}.`);
+      window.open(`https://wa.me/${numero}?text=${texto}`, '_blank', 'noopener,noreferrer');
+    });
+  }
+
+  const navToggle = document.querySelector('[data-nav-toggle]');
+  const mainNav = document.getElementById('main-nav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', () => {
+      const aberto = mainNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(aberto));
+    });
+    mainNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 });
