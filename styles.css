@@ -173,8 +173,9 @@ a{color:inherit;text-decoration:none;}
   border-radius:var(--raio);
   overflow:hidden;
   box-shadow:var(--sombra);
+  aspect-ratio:2/3;
 }
-.hero-svg{width:100%;height:auto;display:block;}
+.hero-graphic img{width:100%;height:100%;object-fit:cover;display:block;}
 
 /* Servicos */
 .servicos{
