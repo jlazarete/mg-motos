@@ -1,7 +1,7 @@
 // Dado sensivel centralizado em um unico lugar: nunca duplicar o numero no HTML.
 const CONFIG = {
   telefone: '+5511937297463',
-  mensagemPadrao: 'Ola! Vim pelo site da MG Motos e gostaria de um orcamento.',
+  mensagemPadrao: 'Olá! Vim pelo site da MG Motos e gostaria de um orçamento.',
   enderecoQuery: 'Av. das Cerejeiras, 34, Jardim Japao, Sao Paulo - SP',
 };
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const moto = document.getElementById('orcamento-moto').value;
       const servico = document.getElementById('orcamento-servico').value;
       const numero = CONFIG.telefone.replace(/\D/g, '');
-      const texto = encodeURIComponent(`Ola! Gostaria de um orcamento para ${servico} na minha ${moto}.`);
+      const texto = encodeURIComponent(`Olá! Gostaria de um orçamento para ${servico} na minha ${moto}.`);
       window.open(`https://wa.me/${numero}?text=${texto}`, '_blank', 'noopener,noreferrer');
     });
   }
