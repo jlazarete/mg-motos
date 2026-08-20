@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="preload" as="image" href="assets/img/moto-hornet-mg-motos.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/moto-hornet-mg-motos.webp" imagesrcset="assets/img/moto-hornet-mg-motos-480.webp 480w, assets/img/moto-hornet-mg-motos.webp 900w" imagesizes="(max-width: 900px) 100vw, 520px" type="image/webp" fetchpriority="high">
 
 <link rel="stylesheet" href="styles.css">
 
@@ -121,9 +121,14 @@
       </div>
       <div class="hero-graphic">
         <picture>
-          <source srcset="assets/img/moto-hornet-mg-motos.webp" type="image/webp">
+          <source
+            srcset="assets/img/moto-hornet-mg-motos-480.webp 480w, assets/img/moto-hornet-mg-motos.webp 900w"
+            sizes="(max-width: 900px) 100vw, 520px"
+            type="image/webp">
           <img
             src="assets/img/moto-hornet-mg-motos.jpg"
+            srcset="assets/img/moto-hornet-mg-motos-480.jpg 480w, assets/img/moto-hornet-mg-motos.jpg 900w"
+            sizes="(max-width: 900px) 100vw, 520px"
             alt="Moto naked vermelha em ângulo frontal diagonal, ilustrando a mecânica geral de motos da MG Motos"
             width="900" height="1350"
             loading="eager"
