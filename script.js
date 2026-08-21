@@ -85,4 +85,26 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Navegacao interna sem expor #ancora na barra de enderecos: intercepta
+  // qualquer link href="#algo", rola ate o alvo descontando a altura do
+  // header sticky, e nunca escreve no location.hash.
+  const header = document.querySelector('.site-header');
+  function scrollToTarget(target) {
+    const offset = header ? header.offsetHeight : 0;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (evento) => {
+      const id = link.getAttribute('href').slice(1);
+      const target = id ? document.getElementById(id) : null;
+      evento.preventDefault();
+      if (target) {
+        scrollToTarget(target);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
 });
