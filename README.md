@@ -31,7 +31,8 @@ styles.css          design system (paleta da marca: preto, vermelho, amarelo)
 script.js           WhatsApp/telefone centralizados em uma unica config
 otimizar_imagens.py trata fotos reais recebidas do cliente (resize, webp, og-image, EXIF SEO)
 assets/img/         hero usa foto de moto (banco de imagens); fachada tratada fica em og-image.jpg e reservada para o Google Meu Negocio; raw/ guarda os originais dos clientes (fora do Git)
-docs/               documentacao de apoio (oferta replicavel, etc.)
+_headers            cache HTTP e headers de seguranca (referencia; nao tem efeito no GitHub Pages, so em Netlify)
+CNAME               dominio custom do GitHub Pages
 ```
 
 ## Como rodar localmente
@@ -44,6 +45,32 @@ npx serve .
 
 ## Deploy no GitHub Pages
 
+Publicado desde 2026-08-21 em `https://www.mgmotospecas.com.br/` via GitHub Pages
+(branch `main`, raiz `/`). O repositorio `jlazarete/mg-motos` precisou virar publico:
+GitHub Pages em conta gratuita nao publica repositorio privado. Nada no codigo ou no
+historico e mais sensivel do que o que ja e publico no proprio site (endereco,
+telefone, CNPJ fazem parte do SEO local por natureza).
+
+**Por que GitHub Pages e nao Netlify**: o site rodou algumas horas na Netlify em
+2026-08-21, mas a Netlify lancou nesse mesmo dia um sistema de visibilidade de
+projeto que exibe um badge "Powered by Netlify" em todo projeto publico, sem opcao
+de tirar sem virar privado (inviavel, o site precisa ser publico) ou pagar por um
+plano cuja documentacao nao confirma remover o badge. Avaliado Vercel Hobby como
+alternativa e descartado: os termos de servico proibem uso comercial, incluindo
+projeto feito por consultor pago (este caso), com risco de o site ser desligado
+sem aviso. GitHub Pages ficou sem equivalente ao `_headers` da Netlify (perdeu os
+headers de seguranca/cache HTTP que tinham sido aplicados), mas e gratuito, sem
+badge, sem risco de ToS — troca aceita porque esses headers sao reforco extra
+(defesa em profundidade), nao a protecao que resolve algo real pro site funcionar.
+
+Configuracao feita via `gh api` (repo publico, Pages habilitado, dominio custom) e
+arquivo `CNAME` na raiz apontando pro `www.mgmotospecas.com.br`. DNS: 4 registros A
+no apex (`185.199.108.153` a `.111.153`) e 1 CNAME de `www` pro `jlazarete.github.io`,
+configurados no DNS da Netlify (nameservers ja delegados la desde o apontamento do
+dominio proprio, usado so como DNS puro agora, nao como host).
+
+Pra clonar este processo num cliente novo do zero:
+
 ```bash
 git init
 git add .gitignore index.html styles.css script.js README.md docs
@@ -51,9 +78,11 @@ git commit -m "feat: site institucional da mg motos com seo local"
 git branch -M main
 git remote add origin <url-do-repositorio-no-github>
 git push -u origin main
+gh repo edit <usuario>/<repo> --visibility public --accept-visibility-change-consequences
+gh api -X POST repos/<usuario>/<repo>/pages -f "source[branch]=main" -f "source[path]=/"
 ```
 
-Depois, no GitHub: **Settings > Pages > Branch: main /(root)** e salvar. O site fica no ar em `https://<usuario>.github.io/<repositorio>/`.
+Sem dominio proprio, o site fica em `https://<usuario>.github.io/<repositorio>/`.
 
 ## Pendencias que dependem do cliente (MG Motos)
 
@@ -65,7 +94,7 @@ Antes de considerar o site pronto para publicar, confirmar com o cliente:
 - [ ] **Horario de atendimento** exato (o schema.org esta com um horario placeholder de segunda a sabado, 08h-18h, que precisa ser confirmado ou corrigido).
 - [x] **Nome oficial da rua**: confirmado com o cliente como "Av. das Cerejeiras, 34" — mesmo formato que ja aparecia no registro do Google Maps para esse endereco (perfil da barbearia anterior). Site atualizado.
 - [ ] **Link do perfil do Google Meu Negocio** (para linkar no site e citar como `sameAs` no schema.org).
-- [x] **Dominio proprio**: registrado em 2026-08-20 — `mgmotospecas.com.br`. `canonical`, `og:image`/`og:url` e schema.org atualizados para `https://www.mgmotospecas.com.br/`. `robots.txt` e `sitemap.xml` criados apontando para esse dominio. Falta apontar o DNS para o host de deploy escolhido (ver secao de Deploy).
+- [x] **Dominio proprio**: registrado em 2026-08-20 — `mgmotospecas.com.br`. `canonical`, `og:image`/`og:url` e schema.org atualizados para `https://www.mgmotospecas.com.br/`. `robots.txt` e `sitemap.xml` criados apontando para esse dominio. DNS apontado e site publicado em 2026-08-21 (ver secao de Deploy).
 
 ## Status do Projeto (Kanban / Checklist)
 
@@ -85,13 +114,5 @@ Antes de considerar o site pronto para publicar, confirmar com o cliente:
 - [ ] Confirmar horario de atendimento e ajustar `openingHoursSpecification`.
 - [x] Confirmar NAP exato (nome da rua) junto ao Google Meu Negocio do cliente — "Av. das Cerejeiras, 34".
 - [x] Criar/registrar dominio proprio — `mgmotospecas.com.br` (2026-08-20).
-- [ ] Deploy e apontamento de DNS do dominio proprio.
+- [x] Deploy e apontamento de DNS do dominio proprio — GitHub Pages, 2026-08-21.
 
----
-
-## Documentacao de Apoio Operacional
-
-Material complementar sobre como este projeto se encaixa na oferta de servicos:
-
-- [Central de Documentacao (Indice Geral)](docs/README.md)
-- [Oferta Replicavel para Oficinas e Comercios de Bairro](docs/oferta-replicavel-oficinas.md)
