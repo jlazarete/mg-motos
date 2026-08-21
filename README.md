@@ -93,7 +93,7 @@ Antes de considerar o site pronto para publicar, confirmar com o cliente:
 - [ ] **Fotos da bancada de servico e da equipe** — pendentes; basta colocar em `assets/img/raw/` e rodar `python otimizar_imagens.py` de novo.
 - [ ] **Horario de atendimento** exato (o schema.org esta com um horario placeholder de segunda a sabado, 08h-18h, que precisa ser confirmado ou corrigido).
 - [x] **Nome oficial da rua**: confirmado com o cliente como "Av. das Cerejeiras, 34" — mesmo formato que ja aparecia no registro do Google Maps para esse endereco (perfil da barbearia anterior). Site atualizado.
-- [ ] **Link do perfil do Google Meu Negocio** (para linkar no site e citar como `sameAs` no schema.org).
+- [ ] **Perfil do Google Meu Negocio criado em 2026-08-21** (conta dedicada `mgmotospecasservicos@gmail.com`, nao a pessoal do Lazarete: proximo comercio de bairro repete o mesmo padrao, sem misturar clientes numa conta so). Categoria "Oficina mecanica de motos", endereco, telefone, site, descricao, 8 servicos e foto de capa (fachada) preenchidos. Nome "MG Motos" confirmado batendo com a placa real, visivel na propria foto da fachada. **Falta a verificacao** (perfil fica "Nao visivel publicamente" ate isso): opcoes oferecidas foram telefone do cliente (SMS/ligacao, precisa de alguem com acesso a esse numero na hora) ou video da fachada/interior (precisa ir ao local); e-mail em `@mgmotospecas.com.br` nao funciona, dominio nao tem caixa de e-mail configurada. Depois de verificado, linkar o perfil no site como `sameAs` no schema.org.
 - [x] **Dominio proprio**: registrado em 2026-08-20 — `mgmotospecas.com.br`. `canonical`, `og:image`/`og:url` e schema.org atualizados para `https://www.mgmotospecas.com.br/`. `robots.txt` e `sitemap.xml` criados apontando para esse dominio. DNS apontado e site publicado em 2026-08-21 (ver secao de Deploy).
 
 ## Status do Projeto (Kanban / Checklist)
@@ -115,4 +115,5 @@ Antes de considerar o site pronto para publicar, confirmar com o cliente:
 - [x] Confirmar NAP exato (nome da rua) junto ao Google Meu Negocio do cliente — "Av. das Cerejeiras, 34".
 - [x] Criar/registrar dominio proprio — `mgmotospecas.com.br` (2026-08-20).
 - [x] Deploy e apontamento de DNS do dominio proprio — GitHub Pages, 2026-08-21.
+- [ ] Criar perfil do Google Meu Negocio — feito em 2026-08-21, falta verificar (telefone do cliente ou video da fachada).
 
